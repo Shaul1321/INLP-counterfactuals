@@ -106,6 +106,7 @@ def main():
 
     try:
         num_labels = glue_tasks_num_labels[data_args.task_name]
+        print(num_labels)
         output_mode = glue_output_modes[data_args.task_name]
     except KeyError:
         raise ValueError("Task not found: %s" % (data_args.task_name))

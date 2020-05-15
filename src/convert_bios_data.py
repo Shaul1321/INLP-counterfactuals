@@ -18,6 +18,11 @@ def process(data: List[dict], prof2ind, mode):
         f.write("sentence\tlabel\n")
 
         for s,l in zip(sents,labels):
+
+            if "\0" in s:
+                print(s)
+                exit()
+
             f.write(s + "\t" + str(l) + "\n")
 
 

@@ -1,4 +1,4 @@
-export GLUE_DIR=data/
+export GLUE_DIR=glue_data
 export TASK_NAME=SST-2
 
 python run_glue.py \

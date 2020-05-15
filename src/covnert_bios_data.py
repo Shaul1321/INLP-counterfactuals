@@ -11,3 +11,4 @@ dev = load_data("dev")
 test = load_data("test")
 
 print(train[0])
+print(dev[0])

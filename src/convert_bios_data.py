@@ -18,7 +18,7 @@ def process(data: List[dict], prof2ind, mode):
         f.write("sentence\tlabel\n")
 
         for s,l in zip(sents,labels):
-            f.write(s + "\t" + l + "\n")
+            f.write(s + "\t" + str(l) + "\n")
 
 
 train = load_data("train")
@@ -28,7 +28,7 @@ test = load_data("test")
 professions = set([d["p"] for d in train])
 prof2ind = {p:i for i,p in enumerate(sorted(professions))}
 
-with open("prof2ind.pickle", wb) as f:
+with open("prof2ind.pickle", "wb") as f:
     pickle.dump(prof2ind, f)
 
 

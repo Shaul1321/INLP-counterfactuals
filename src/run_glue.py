@@ -22,7 +22,7 @@ import os
 import sys
 from dataclasses import dataclass, field
 from typing import Dict, Optional
-
+import torch
 import numpy as np
 
 from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer, EvalPrediction, GlueDataset
@@ -188,6 +188,8 @@ def main():
                     writer.write("%s = %s\n" % (key, value))
 
             results.update(result)
+
+    torch.save(model.state_dict(), "models/" + model_args.model_name + ".pickle")
 
     return results
 

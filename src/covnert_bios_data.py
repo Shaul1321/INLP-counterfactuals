@@ -25,7 +25,7 @@ train = load_data("train")
 dev = load_data("dev")
 test = load_data("test")
 
-professions = set([d["p"]] for d in train)
+professions = set([d["p"] for d in train])
 prof2ind = {p:i for i,p in enumerate(sorted(professions))}
 
 with open("prof2ind.pickle", wb) as f:

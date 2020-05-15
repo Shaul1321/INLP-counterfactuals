@@ -33,5 +33,5 @@ with open("prof2ind.pickle", wb) as f:
 
 
 process(train, prof2ind, "train")
-process(dev, prof2ind, "train")
-process(test, prof2ind, "train")
+process(dev, prof2ind, "dev")
+process(test, prof2ind, "test")

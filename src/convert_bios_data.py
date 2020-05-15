@@ -19,10 +19,8 @@ def process(data: List[dict], prof2ind, mode):
 
         for s,l in zip(sents,labels):
 
-            if "\0" in s:
-                print(s)
-                exit()
-
+            if ("\0" in s) or len(s) < 10:
+                continue
             f.write(s + "\t" + str(l) + "\n")
 
 

@@ -1,7 +1,7 @@
 //local embedding_size = 768;
 //local pretrained_model_name_or_path = "roberta-base";
 //local model_type = "roberta";
-local pretrained_model_name_or_path = "bert-base-cased";
+local pretrained_model_name_or_path = "bert-base-uncased";
 //local model_type = "bert";
 //local pretrained_model_name_or_path = "distilbert-base-uncased";
 //local model_type = "bert";
@@ -25,12 +25,12 @@ local max_len = 512;
         }
     }
   },
-  train_data_path: "/home/nlp/jacovia/ilp/data/sst-2/train.jsonl",
-  validation_data_path: "/home/nlp/jacovia/ilp/data/sst-2/dev.jsonl",
-  test_data_path: "/home/nlp/jacovia/ilp/data/sst-2/test.jsonl",
+  train_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/train.jsonl",
+  validation_data_path: "home/nlp/ravfogs/INLP-counterfactuals/data/bios/dev.jsonl",
+  test_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/test.jsonl",
   evaluate_on_test: true,
   model: {
-    type: "nullspace_transformer_classifier",
+    type: "transformer_classifier",
     pretrained_model_name_or_path: pretrained_model_name_or_path,
     num_labels: 2,
   },

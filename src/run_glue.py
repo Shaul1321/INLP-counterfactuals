@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from typing import Dict, Optional
 import torch
 import numpy as np
+import argparse
 
 from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer, EvalPrediction, GlueDataset
 from transformers import GlueDataTrainingArguments as DataTrainingArguments
@@ -75,6 +76,12 @@ def main():
     else:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
+    NUM_LABELS = None
+    for arg in sys.argv:
+      if "labels" in arg:
+        NUM_LABELS = int(arg.split(":")[1])
+
+
     if (
         os.path.exists(training_args.output_dir)
         and os.listdir(training_args.output_dir)
@@ -105,8 +112,7 @@ def main():
     set_seed(training_args.seed)
 
     try:
-        num_labels = glue_tasks_num_labels[data_args.task_name]
-        print(num_labels)
+        num_labels = NUM_LABELS if NUM_LABELS is not None else glue_tasks_num_labels[data_args.task_name]
         output_mode = glue_output_modes[data_args.task_name]
     except KeyError:
         raise ValueError("Task not found: %s" % (data_args.task_name))

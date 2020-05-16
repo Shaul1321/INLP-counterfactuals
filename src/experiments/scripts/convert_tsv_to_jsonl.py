@@ -1,3 +1,5 @@
+import tqdm
+
 if __name__ == '__main__':
     import argparse
     from os import listdir
@@ -9,7 +11,7 @@ if __name__ == '__main__':
     import numpy as np
     import json
 
-    dataset_path = "data/bios/"
+    dataset_path = "../../data/bios/"
 
 
     for dset_name in ["dev", "test", "train"]:
@@ -17,7 +19,7 @@ if __name__ == '__main__':
             with open(f"{dataset_path}/{dset_name}.jsonl", "w") as fo:
                 headers = f.readline()
 
-                for line in f:
+                for line in tqdm.tqdm(f):
                     line = line.strip()
                     if not line:
                         continue

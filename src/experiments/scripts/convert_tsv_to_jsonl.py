@@ -1,4 +1,3 @@
-  GNU nano 2.3.1                                          File: convert_tsv_to_jsonl.py
 
 import tqdm
 

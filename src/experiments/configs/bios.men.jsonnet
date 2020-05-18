@@ -25,9 +25,9 @@ local max_len = 500;
         }
     }
   },
-  train_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/train.jsonl",
-  validation_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/dev.jsonl",
-  test_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/test.jsonl",
+  train_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/train.men.jsonl",
+  validation_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/dev.men.jsonl",
+  test_data_path: "/home/nlp/ravfogs/INLP-counterfactuals/data/bios/test.men.jsonl",
   evaluate_on_test: true,
   model: {
     type: "transformer_classifier",
@@ -57,6 +57,6 @@ local max_len = 500;
         }
   },
   distributed: {
-    cuda_devices: [0,1,2],
+    cuda_devices: [0,1,2,3],
     }
 }

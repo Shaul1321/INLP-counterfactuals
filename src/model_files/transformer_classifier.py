@@ -58,13 +58,15 @@ class TransformerClassifier(Model):
         initializer(self)
 
     def _transformer_forward(self, tokens: Dict[str, torch.LongTensor], label: torch.IntTensor = None):
-        output = self.model(tokens['tokens']['token_ids'], tokens['tokens']['mask'], labels=label)
+        if tokens['tokens']['token_ids'].shape[1] != tokens['tokens']['mask'].shape[1]:
+            print("1!!!!!ERROR!!!!!!!!!!!")
+        output = self.model(tokens['tokens']['token_ids'][:,:l], tokens['tokens']['mask'][:,:l], labels=label)
         # -1 for attentions, 0 for layer 0, mean across heads, :,0 for the cls attention over the batch
 
         # output[-1] = attentions
         # attentions[layers][heads][tokens]
 
-        return {'logits': output[-2], 'loss': output[0]}
+        return {'logits': output[1], 'loss': output[0]}
 
     def forward(  # type: ignore
         self, tokens: Dict[str, torch.LongTensor],
